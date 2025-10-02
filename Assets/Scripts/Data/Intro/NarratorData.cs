@@ -8,5 +8,6 @@ namespace Data.Intro
         public string narratorName;
         public Sprite narratorSprite;
         public AnimationFrame[] narratorTalkingAnimationFrames;
+        public AudioClip narratorVoice;
     }
 }

@@ -1,9 +1,18 @@
+using Data.Sound;
 using UnityEngine;
 
 namespace Core.Scene
 {
-    public class PanelController : MonoBehaviour
+    public class PanelController : BaseController<PanelController>
     {
+        [SerializeField] private UserInterfaceSoundData userInterfaceSoundData;
+        [SerializeField] private AudioSource audioSource;
+        
+        public void HoverButton()
+        {
+            
+        }
+        
         public void StartGame()
         {
             SceneTransitor.Instance.LoadScene(1);
