@@ -3,7 +3,7 @@ using UnityEngine;
 public class SimpleMouseLook : MonoBehaviour
 {
     [Header("Sensibilité")]
-    public float mouseSensitivity = 100f;     // sensibilité souris
+    public float mouseSensitivity = 50f;     // sensibilité souris
     public float controllerSensitivity = 80f; // sensibilité joystick
 
     private float xRotation = 0f;
@@ -24,7 +24,7 @@ public class SimpleMouseLook : MonoBehaviour
 
     void OnLook(float rawX, float rawY)
     {
-        float sens = InputController.Instance.isUsingController ? controllerSensitivity : mouseSensitivity;
+        float sens = InputController.Instance.isUsingController ? controllerSensitivity : (mouseSensitivity * 100f);
 
         float lookX = rawX * sens * Time.deltaTime;
         float lookY = rawY * sens * Time.deltaTime;
