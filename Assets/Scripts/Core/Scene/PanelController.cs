@@ -7,7 +7,6 @@ namespace Core.Scene
 {
     public class PanelController : BaseController<PanelController>
     {
-        [SerializeField] private UserInterfaceSoundData userInterfaceSoundData;
         [SerializeField] private AudioSource audioSource;
         
         [SerializeField] private Button startGameButton;
@@ -43,12 +42,12 @@ namespace Core.Scene
 
         public void HoverButton()
         {
-            audioSource.PlayOneShot(userInterfaceSoundData.hoverButtonAudioClip);
+            audioSource.PlayOneShot(UserInterfaceSoundData.Instance.hoverButtonAudioClip);
         }
 
         public void ClickButton()
         {
-            audioSource.PlayOneShot(userInterfaceSoundData.clickButtonAudioClip);
+            audioSource.PlayOneShot(UserInterfaceSoundData.Instance.clickButtonAudioClip);
         }
 
         private void OnStartGameButtonClicked()
