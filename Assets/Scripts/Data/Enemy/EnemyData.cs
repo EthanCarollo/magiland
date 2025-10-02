@@ -7,5 +7,6 @@ namespace Data.Enemy
     {
         public string enemyName;
         public int maxLife;
+        public Sprite deadBody;
     }
 }
