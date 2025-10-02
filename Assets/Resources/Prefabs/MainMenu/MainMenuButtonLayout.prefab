@@ -240,6 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scene.PanelController
   userInterfaceSoundData: {fileID: 11400000, guid: 0f4b90f279f9b40dfb08a5ce1af012fc, type: 2}
   audioSource: {fileID: 7465742824015918572}
+  startGameButton: {fileID: 6723465401066056882}
+  exitGameButton: {fileID: 8296879958429793424}
 --- !u!82 &7465742824015918572
 AudioSource:
   m_ObjectHideFlags: 0
@@ -457,19 +459,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6865019657742355562}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5175472547421100409}
-        m_TargetAssemblyTypeName: Core.Scene.PanelController, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5942943848004835003
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,16 +716,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7334011550317591502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5175472547421100409}
-        m_TargetAssemblyTypeName: Core.Scene.PanelController, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
