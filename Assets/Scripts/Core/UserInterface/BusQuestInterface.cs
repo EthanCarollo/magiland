@@ -19,13 +19,25 @@ namespace Core.UserInterface
             busQuestProgressSlider.value = 0;
             busQuestProgressSlider.maxValue = BusQuestController.Instance.maxKilledEnemy;
             if (BusQuestController.Instance != null)
+            {
                 BusQuestController.Instance.OnQuestAdvancement += UpdateUI;
+                BusQuestController.Instance.OnQuestEnd += EndQuest;
+            }
         }
 
         public void OnDisable()
         {
             if (BusQuestController.Instance != null)
+            {
                 BusQuestController.Instance.OnQuestAdvancement -= UpdateUI;
+                BusQuestController.Instance.OnQuestEnd -= EndQuest;
+            }
+        }
+
+        public void EndQuest()
+        {
+            busQuestDescription.text =
+                $"gg i son mor, mtn le bus est unlock, vzy";
         }
 
         public void UpdateUI(int actualProgress, int maxProgress)

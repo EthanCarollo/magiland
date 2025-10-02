@@ -1,22 +1,23 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Core.Quest;
 
-public class SpawnController : MonoBehaviour
+public class BusSpawnController : MonoBehaviour
 {
     [Header("Spawn Area")]
     [SerializeField] private float width = 100f;
     [SerializeField] private float height = 100f;
-    [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject[] prefabs;
 
     [Header("NavMesh Settings")]
     [SerializeField] private float sampleMaxDistance = 2f;
     [SerializeField] private int maxAttempts = 20;
 
     [Header("Spawn Settings")]
-    [SerializeField] private float spawnInterval = 5f;   // temps entre 2 spawns
-    [SerializeField] private float minDistanceFromPlayer = 10f; // distance mini avec le joueur
-    [SerializeField] private Transform player; // référence au joueur
+    [SerializeField] private float spawnInterval = 5f;
+    [SerializeField] private float minDistanceFromPlayer = 10f;
+    [SerializeField] private Transform player;
 
     private bool spawning = true;
 
@@ -26,6 +27,18 @@ public class SpawnController : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
 
         StartCoroutine(SpawnLoop());
+
+        BusQuestController.Instance.OnQuestEnd += StopSpawning;
+    }
+
+    void OnDisable()
+    {
+        if(BusQuestController.Instance != null) BusQuestController.Instance.OnQuestEnd -= StopSpawning;
+    }
+
+    private void StopSpawning()
+    {
+        spawning = false;
     }
 
     IEnumerator SpawnLoop()
@@ -35,13 +48,10 @@ public class SpawnController : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
 
             Vector3? pos = GetRandomSpawnPoint();
-            if (pos.HasValue)
+            if (pos.HasValue && prefabs.Length > 0 && spawning)
             {
+                GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
                 Instantiate(prefab, pos.Value, Quaternion.identity);
-            }
-            else
-            {
-                Debug.LogWarning("[SpawnController] Aucun point spawnable trouvé sur le NavMesh !");
             }
         }
     }
@@ -54,12 +64,10 @@ public class SpawnController : MonoBehaviour
                                   new Vector3(Random.Range(-width / 2f, width / 2f), 0f,
                                               Random.Range(-height / 2f, height / 2f));
 
-            // Check NavMesh
             if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, sampleMaxDistance, NavMesh.AllAreas))
             {
-                // Vérifier distance minimum joueur
                 if (player != null && Vector3.Distance(player.position, hit.position) < minDistanceFromPlayer)
-                    continue; // trop proche → on retente
+                    continue;
 
                 return hit.position;
             }
