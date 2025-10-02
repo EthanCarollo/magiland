@@ -1,6 +1,18 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+ * I know you dont like this, but it is so useful in our case
+ * forgive us please.
+ *
+ * please
+ *
+ * please
+ */
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Core.Controllers
 {
     public class PlayerController : BaseController<PlayerController>
@@ -16,7 +28,17 @@ namespace Core.Controllers
 
         private Vector3 originalPos;
         private Coroutine shakeCoroutine;
+        
+        public int life = 5;
+        public delegate void OnLifeChange(int newLife);
+        public event OnLifeChange LifeChanged;
 
+        public void TakeDamage(int damage = 1)
+        {
+            life -= damage;
+            LifeChanged?.Invoke(life);
+        }
+        
         public void ShakeCamera()
         {
             if (shakeCoroutine != null)
@@ -46,5 +68,13 @@ namespace Core.Controllers
             _camera.transform.localPosition = originalPos;
             shakeCoroutine = null;
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Editor Take Damage")]
+        private void EditorTakeDamage()
+        {
+            TakeDamage(1);
+        }
+#endif
     }
 }

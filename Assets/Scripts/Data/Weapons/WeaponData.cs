@@ -16,10 +16,3 @@ namespace Data.Weapons
         public abstract (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask, PlayerWeapon playerWeapon);
     }
 }
-
-[Serializable]
-public class AnimationFrame
-{
-    public Sprite frame;
-    public float duration = 0.2f;
-}
