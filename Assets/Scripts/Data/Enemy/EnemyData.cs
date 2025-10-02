@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Data.Enemy
 {
@@ -8,7 +9,8 @@ namespace Data.Enemy
         public GameObject enemyPrefab;
         public string enemyName;
         public float enemySpeed;
+        public float enemyRange;
         public int maxLife;
-        public Sprite deadBody;
+        public List<Sprite> deadBodies;
     }
 }

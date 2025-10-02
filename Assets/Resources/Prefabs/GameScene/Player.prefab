@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5878128017992594722}
   - component: {fileID: 1318186773021649177}
   - component: {fileID: 8613073521846255268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,9 +202,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
   weapon: {fileID: 11400000, guid: d626027a83e724abb892ba07fd525cef, type: 2}
-  enemyMask:
+  hitMask:
     serializedVersion: 2
     m_Bits: 8
+  passThroughMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8613073521846255268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +272,7 @@ GameObject:
   - component: {fileID: 7429905218329245738}
   - component: {fileID: 3335195987484966511}
   - component: {fileID: 1397414419612503026}
+  - component: {fileID: 8524931458849774804}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -457,6 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLook
   mouseSensitivity: 500
+  controllerSensitivity: 80
 --- !u!114 &1397414419612503026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,3 +476,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementSimpleRB
   moveSpeed: 5
   smoothing: 0
+--- !u!114 &8524931458849774804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066327275220092923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16868ee98deb446fad445377cab3b0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Controllers.PlayerController

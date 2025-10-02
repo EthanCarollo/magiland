@@ -15,5 +15,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 4659610693648200294, guid: 589ae44bc6cd44915a84d4a8a392e1cd, type: 3}
   enemyName: Friedrich
   enemySpeed: 2
+  enemyRange: 5
   maxLife: 50
-  deadBody: {fileID: 0}
+  deadBodies:
+  - {fileID: -6871527775497731901, guid: 2cc0c56ced8e14b3eb6df7681f244074, type: 3}
+  - {fileID: -1604116805702851879, guid: 809c2f9c3a80942d5a0899b00d8d6a3d, type: 3}
+  - {fileID: -584013683159644440, guid: dc94507ab692e4cc29325abb81b93747, type: 3}

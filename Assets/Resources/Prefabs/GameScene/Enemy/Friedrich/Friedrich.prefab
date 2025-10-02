@@ -630,6 +630,7 @@ MonoBehaviour:
   currentLife: 0
   navMeshAgent: {fileID: 5075133929869573898}
   animator: {fileID: 2154129149138357308}
+  transformCanvas: {fileID: 3710699307571558603}
   enemyNameText: {fileID: 761524820773244115}
   enemyLifeSlider: {fileID: 1099030586881261538}
 --- !u!136 &-7638245629448740579
