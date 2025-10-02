@@ -10,8 +10,10 @@ namespace Data.Weapons
         public int spread;
         public int bullets;
 
-        public override (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask)
+        public override (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask, PlayerWeapon playerWeapon)
         {
+            playerWeapon.shotgunParticle.Stop();
+            playerWeapon.shotgunParticle.Play();
             PlayerController.Instance.ShakeCamera();
             
             var cam = Camera.main;

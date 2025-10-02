@@ -69,6 +69,7 @@ public class EnemyBehaviour : MonoBehaviour
         this.GetComponent<Animator>().enabled = false;
         this.GetComponent<SpriteSkin>().enabled = false;
         this.GetComponent<NavMeshAgent>().enabled = false;
+        this.GetComponent<Collider>().enabled = false;
         if (enemy.deadBodies.Count > 0)
         {
             spriteRenderer.sprite = enemy.deadBodies.GetRandom();

@@ -5,7 +5,7 @@ namespace Data.Weapons
     [CreateAssetMenu(fileName = "GunData", menuName = "Weapons/GunData")]
     public class GunData : WeaponData
     {
-        public override (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask)
+        public override (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask, PlayerWeapon playerWeapon)
         {
             var cam = Camera.main;
             if (cam == null) return (default, null);

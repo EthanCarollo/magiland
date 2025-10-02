@@ -15,6 +15,8 @@ public class SimpleMouseLook : MonoBehaviour
 
     void OnDisable()
     {
+        // Sometimes, we don't really know why but this shit throw an error, I hate that shit so I put a null
+        // validation
         if (InputController.Instance != null)
             InputController.Instance.OnLook -= OnLook;
     }

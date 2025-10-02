@@ -9,6 +9,5 @@ namespace Data.Player
         [Header("Sensibility")]
         public float mouseSensitivity = 50f;
         public float controllerSensitivity = 80f;
-        
     }
 }

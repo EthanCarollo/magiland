@@ -7,6 +7,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private WeaponData weapon;
     [SerializeField] private LayerMask hitMask;         // ex: Enemy | Destructible
     [SerializeField] private LayerMask passThroughMask; // ex: VFX | Trigger | Player | Projectiles
+    public ParticleSystem shotgunParticle;
     private MeshRenderer weaponRenderer;
     private Material weaponMaterial;
     private AudioSource audioSource;
@@ -48,7 +49,7 @@ public class PlayerWeapon : MonoBehaviour
         if (!isShooting)
         {
             isShooting = true;
-            (Ray ray, RaycastHit? hit) = weapon.Shoot(hitMask, passThroughMask);
+            (Ray ray, RaycastHit? hit) = weapon.Shoot(hitMask, passThroughMask, this);
 
             lastRay = ray;
             hasHit = hit.HasValue;
