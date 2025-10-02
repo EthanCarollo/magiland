@@ -2,27 +2,36 @@ using UnityEngine;
 
 public class SimpleMouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;  // Sensibilité de la souris
+    [Header("Sensibilité")]
+    public float mouseSensitivity = 100f;     // sensibilité souris
+    public float controllerSensitivity = 80f; // sensibilité joystick
+
     private float xRotation = 0f;
 
     void Start()
     {
-        // Bloquer et cacher le curseur
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        InputController.Instance.OnLook += OnLook;
     }
 
-    void Update()
+    void OnDisable()
     {
-        // Récupérer le mouvement de la souris
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-        
-        // Rotation verticale (haut/bas)
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // empêche de retourner la caméra
+        if (InputController.Instance != null)
+            InputController.Instance.OnLook -= OnLook;
+    }
 
-        // Appliquer la rotation
-        transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y + mouseX, 0f);
+    void OnLook(float rawX, float rawY)
+    {
+        float sens = InputController.Instance.isUsingController ? controllerSensitivity : mouseSensitivity;
+
+        float lookX = rawX * sens * Time.deltaTime;
+        float lookY = rawY * sens * Time.deltaTime;
+
+        xRotation -= lookY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y + lookX, 0f);
     }
 }
