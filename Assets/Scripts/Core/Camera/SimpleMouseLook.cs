@@ -17,7 +17,6 @@ public class SimpleMouseLook : MonoBehaviour
         // Récupérer le mouvement de la souris
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-        Debug.Log(Input.GetAxis("Mouse X"));
         
         // Rotation verticale (haut/bas)
         xRotation -= mouseY;
