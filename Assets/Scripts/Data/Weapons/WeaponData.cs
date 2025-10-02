@@ -10,6 +10,7 @@ namespace Data.Weapons
         public int damage;
         public AnimationFrame[] idleFrames;
         public AnimationFrame[] animationFrames;
+        public AudioClip shootSound;
         
         public abstract void Shoot(Vector3 position, Quaternion rotation);
     }

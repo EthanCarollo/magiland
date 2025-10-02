@@ -15,16 +15,17 @@ MonoBehaviour:
   weaponName: Shotgun
   damage: 20
   idleFrames:
-  - frame: {fileID: 7429086415387485717, guid: 0a613f62223804f77b9c5c190a789516, type: 3}
+  - frame: {fileID: 21300000, guid: 0a613f62223804f77b9c5c190a789516, type: 3}
     duration: 0.2
   animationFrames:
-  - frame: {fileID: 7429086415387485717, guid: 0a613f62223804f77b9c5c190a789516, type: 3}
+  - frame: {fileID: 21300000, guid: 0a613f62223804f77b9c5c190a789516, type: 3}
     duration: 0.2
-  - frame: {fileID: 6043855864513616819, guid: f2b4b5d65782845eda31bdbe2f1f8831, type: 3}
+  - frame: {fileID: 21300000, guid: f2b4b5d65782845eda31bdbe2f1f8831, type: 3}
     duration: 0.2
-  - frame: {fileID: -3739769100712124787, guid: 4d2af2a1b601049fab39f270da581b60, type: 3}
+  - frame: {fileID: 21300000, guid: 4d2af2a1b601049fab39f270da581b60, type: 3}
     duration: 0.2
-  - frame: {fileID: 9089120952808259950, guid: 4773e67e430ab46c1aeda9744cc23865, type: 3}
+  - frame: {fileID: 21300000, guid: 4773e67e430ab46c1aeda9744cc23865, type: 3}
     duration: 0.2
+  shootSound: {fileID: 8300000, guid: 0b68608cff27e4a95a3299acd466b1ad, type: 3}
   spread: 4
   bullets: 6
