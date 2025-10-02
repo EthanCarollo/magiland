@@ -5,9 +5,11 @@ namespace Data.Weapons
 {
     public abstract class WeaponData : ScriptableObject
     {
+        [Header("Weapon Settings")]
         public string weaponName;
         public int damage;
-        [SerializeField] public AnimationFrame[] animationFrames;
+        public AnimationFrame[] idleFrames;
+        public AnimationFrame[] animationFrames;
         
         public abstract void Shoot(Vector3 position, Quaternion rotation);
     }
@@ -17,5 +19,5 @@ namespace Data.Weapons
 public class AnimationFrame
 {
     public Sprite frame;
-    public float duration;
+    public float duration = 0.2f;
 }

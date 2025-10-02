@@ -5,6 +5,7 @@ namespace Data.Weapons
     [CreateAssetMenu(fileName = "ShotgunData", menuName = "Weapons/ShotgunData")]
     public class ShotgunData : WeaponData
     {
+        [Header("Shotgun Settings")]
         public int spread;
         public int bullets;
         
