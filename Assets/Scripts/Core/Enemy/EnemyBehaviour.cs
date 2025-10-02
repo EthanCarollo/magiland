@@ -1,6 +1,8 @@
+using Core.Controllers;
 using Data.Enemy;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -8,6 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("References & Data")]
     [SerializeField] private EnemyData enemy;
     [SerializeField] private float currentLife;
+    [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private Animator animator;
     private SpriteRenderer _spriteRenderer;
     
     [Header("World UI")]
@@ -18,6 +22,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentLife = enemy.maxLife;
         UpdateUi();
+    }
+
+    public void Update()
+    {
+        navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
     }
 
     public void TakeDamage(float damage)

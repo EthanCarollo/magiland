@@ -27,7 +27,8 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnEnable()
     {
-        InputController.Instance.OnShoot += OnShoot;
+        if(InputController.Instance != null) 
+            InputController.Instance.OnShoot += OnShoot;
     }
 
     void SetupWeapon(WeaponData weaponData)
@@ -86,7 +87,8 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnDisable()
     {
-        InputController.Instance.OnShoot -= OnShoot;
+        if(InputController.Instance != null) 
+            InputController.Instance.OnShoot -= OnShoot;
     }
 
     void OnDrawGizmos()

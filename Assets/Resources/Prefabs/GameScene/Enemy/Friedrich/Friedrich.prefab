@@ -471,6 +471,8 @@ GameObject:
   - component: {fileID: 2154129149138357308}
   - component: {fileID: 743793465336577922}
   - component: {fileID: -7638245629448740579}
+  - component: {fileID: 5075133929869573898}
+  - component: {fileID: 1740449113469140833}
   m_Layer: 3
   m_Name: Friedrich
   m_TagString: Untagged
@@ -626,6 +628,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLife
   enemy: {fileID: 11400000, guid: d2d6a195500e64f6a9b4c4c09d27bb88, type: 2}
   currentLife: 0
+  navMeshAgent: {fileID: 5075133929869573898}
+  animator: {fileID: 2154129149138357308}
   enemyNameText: {fileID: 761524820773244115}
   enemyLifeSlider: {fileID: 1099030586881261538}
 --- !u!136 &-7638245629448740579
@@ -651,6 +655,42 @@ CapsuleCollider:
   m_Height: 27.94
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &5075133929869573898
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659610693648200294}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 10.819531
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 27.944996
+  m_BaseOffset: 13.972498
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1740449113469140833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659610693648200294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc53e55f49bf4a77a1ffc8944978a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Billboard
+  target: {fileID: 0}
+  inverse: 0
 --- !u!1 &4983390184506496035
 GameObject:
   m_ObjectHideFlags: 0
