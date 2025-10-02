@@ -38,13 +38,27 @@ ShaderVariantCollection:
         passType: 0
       - keywords: COLOR_FILTER
         passType: 0
+      - keywords: DETAIL_MASKING
+        passType: 0
+      - keywords: DETAIL_MULTIPLY_ADDITIVE
+        passType: 0
       - keywords: EDGE_PLAIN
         passType: 0
       - keywords: GRADATION_GRADIENT
         passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM
+        passType: 0
       - keywords: SAMPLING_EDGE_LUMINANCE
         passType: 0
+      - keywords: SAMPLING_PIXELATION
+        passType: 0
       - keywords: SAMPLING_RGB_SHIFT
+        passType: 0
+      - keywords: TONE_NEGATIVE
+        passType: 0
+      - keywords: TONE_RETRO
+        passType: 0
+      - keywords: TONE_SEPIA
         passType: 0
       - keywords: TRANSITION_BLAZE
         passType: 0

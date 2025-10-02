@@ -1,4 +1,5 @@
 using Core.Controllers;
+using Core.Quest;
 using Data.Enemy;
 using Extensions;
 using TMPro;
@@ -92,5 +93,10 @@ public class EnemyBehaviour : MonoBehaviour
                     transform.position = new Vector3(transform.position.x, transform.position.y + 200f, 0);
                 }));
         });
+
+        if (BusQuestController.Instance != null)
+        {
+            BusQuestController.Instance.OnEnemyDied();
+        }
     }
 }

@@ -66,19 +66,35 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnShoot()
     {
-        if (!isShooting)
+        if (isShooting) return;
+    
+        isShooting = true;
+
+        (Ray ray, RaycastHit? hit) = weapon.Shoot(hitMask, passThroughMask, this);
+        lastRay = ray;
+
+        if (hit.HasValue)
         {
-            isShooting = true;
-            (Ray ray, RaycastHit? hit) = weapon.Shoot(hitMask, passThroughMask, this);
+            SpriteRenderer spriteRenderer = hit.Value.collider.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                LeanTween.cancel(spriteRenderer.gameObject);
+                LeanTween.color(spriteRenderer.gameObject, Color.red, 0.2f)
+                    .setEaseInOutSine()
+                    .setOnComplete(() =>
+                    {
+                        LeanTween.color(spriteRenderer.gameObject, Color.white, 0.8f)
+                            .setEaseInOutSine();
+                    });
+            }
 
-            lastRay = ray;
-            hasHit = hit.HasValue;
-            if (hasHit) lastHit = hit.Value;
-
-            if (weapon.shootSound != null) audioSource.PlayOneShot(weapon.shootSound);
-
-            StartCoroutine(AnimateWeapon(weapon.animationFrames));
+            lastHit = hit.Value;
         }
+
+        if (weapon.shootSound != null)
+            audioSource.PlayOneShot(weapon.shootSound);
+
+        StartCoroutine(AnimateWeapon(weapon.animationFrames));
     }
 
     IEnumerator AnimateWeapon(AnimationFrame[] frames)
