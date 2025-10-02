@@ -489,3 +489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16868ee98deb446fad445377cab3b0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Controllers.PlayerController
+  _simpleMouseLook: {fileID: 3335195987484966511}
+  _weaponSmoothFollow: {fileID: 8613073521846255268}
+  _playerMovementSimpleRB: {fileID: 1397414419612503026}
+  _camera: {fileID: 4508324264577260350}
+  shakeDuration: 0.2
+  shakeMagnitude: 0.05

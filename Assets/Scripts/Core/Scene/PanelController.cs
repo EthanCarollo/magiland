@@ -13,7 +13,7 @@ namespace Core.Scene
         [SerializeField] private Button startGameButton;
         [SerializeField] private Button exitGameButton;
 
-        private void Awake()
+        private void Start()
         {
             if (startGameButton != null)
             {

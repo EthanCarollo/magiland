@@ -1,3 +1,4 @@
+using Core.Controllers;
 using UnityEngine;
 
 namespace Data.Weapons
@@ -11,6 +12,8 @@ namespace Data.Weapons
 
         public override (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask)
         {
+            PlayerController.Instance.ShakeCamera();
+            
             var cam = Camera.main;
             if (cam == null) return (default, null);
 
