@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bdf380496741d4995a991e2fb16cb2, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: Assembly-CSharp::Data.Player.PlayerSettingsData
-  mouseSensitivity: 50
+  mouseSensitivity: 10
   controllerSensitivity: 80
