@@ -202,6 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
   weapon: {fileID: 11400000, guid: d626027a83e724abb892ba07fd525cef, type: 2}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &8613073521846255268
 MonoBehaviour:
   m_ObjectHideFlags: 0

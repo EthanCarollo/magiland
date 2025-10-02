@@ -61,7 +61,7 @@ public class PlayerWeapon : MonoBehaviour
                 {
                     hasHit = true;
                     lastHit = hit;
-                    hit.collider.GetComponent<EnemyLife>()?.TakeDamage(weapon.damage);
+                    hit.collider.GetComponent<EnemyBehaviour>()?.TakeDamage(weapon.damage);
                 }
             }
             else
