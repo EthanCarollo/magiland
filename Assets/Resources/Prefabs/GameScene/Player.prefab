@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1318186773021649177}
   - component: {fileID: 8613073521846255268}
   m_Layer: 6
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,8 +204,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
   weapon: {fileID: 11400000, guid: d626027a83e724abb892ba07fd525cef, type: 2}
   hitMask:
+  hitMask:
     serializedVersion: 2
     m_Bits: 8
+  passThroughMask:
+    serializedVersion: 2
+    m_Bits: 0
   passThroughMask:
     serializedVersion: 2
     m_Bits: 0
@@ -444,7 +449,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -461,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLook
   mouseSensitivity: 500
+  controllerSensitivity: 80
   controllerSensitivity: 80
 --- !u!114 &1397414419612503026
 MonoBehaviour:
