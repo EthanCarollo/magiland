@@ -12,7 +12,7 @@ namespace Data.Weapons
         public AnimationFrame[] animationFrames;
         public AudioClip shootSound;
         
-        public abstract void Shoot(Vector3 position, Quaternion rotation);
+        public abstract (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask);
     }
 }
 

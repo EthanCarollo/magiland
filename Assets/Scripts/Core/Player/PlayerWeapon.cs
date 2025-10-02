@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] private WeaponData weapon;
-    [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private LayerMask hitMask;         // ex: Enemy | Destructible
+    [SerializeField] private LayerMask passThroughMask; // ex: VFX | Trigger | Player | Projectiles
     private MeshRenderer weaponRenderer;
     private Material weaponMaterial;
     private AudioSource audioSource;
@@ -47,28 +48,13 @@ public class PlayerWeapon : MonoBehaviour
         if (!isShooting)
         {
             isShooting = true;
-            weapon.Shoot(transform.position, transform.rotation);
-            if (weapon.shootSound != null) audioSource.PlayOneShot(weapon.shootSound);
+            (Ray ray, RaycastHit? hit) = weapon.Shoot(hitMask, passThroughMask);
 
-            // Shoot using raycast
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             lastRay = ray;
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Ignore))
-            {
-                // Vérifier layer Enemy
-                bool isEnemy = ((1 << hit.collider.gameObject.layer) & enemyMask) != 0;
+            hasHit = hit.HasValue;
+            if (hasHit) lastHit = hit.Value;
 
-                if (isEnemy)
-                {
-                    hasHit = true;
-                    lastHit = hit;
-                    hit.collider.GetComponent<EnemyBehaviour>()?.TakeDamage(weapon.damage);
-                }
-            }
-            else
-            {
-                hasHit = false;
-            }
+            if (weapon.shootSound != null) audioSource.PlayOneShot(weapon.shootSound);
 
             StartCoroutine(AnimateWeapon(weapon.animationFrames));
         }
