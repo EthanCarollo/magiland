@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb406ee73d448d3bc2a2900884ab59f, type: 3}
   m_Name: Friedrich
   m_EditorClassIdentifier: Assembly-CSharp::Data.Enemy.EnemyData
+  enemyPrefab: {fileID: 4659610693648200294, guid: 589ae44bc6cd44915a84d4a8a392e1cd, type: 3}
   enemyName: Friedrich
+  enemySpeed: 2
   maxLife: 50
   deadBody: {fileID: 0}

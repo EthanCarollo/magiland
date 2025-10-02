@@ -21,6 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         currentLife = enemy.maxLife;
+        navMeshAgent.speed = enemy.enemySpeed;
         UpdateUi();
     }
 
