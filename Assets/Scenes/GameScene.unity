@@ -255,67 +255,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &121011816
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 121011817}
-  - component: {fileID: 121011819}
-  - component: {fileID: 121011818}
-  m_Layer: 5
-  m_Name: QuestInformation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &121011817
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121011816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1559856834}
-  m_Father: {fileID: 450573349}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25.33313, y: -22.889648}
-  m_SizeDelta: {x: -1276.9729, y: 339.7857}
-  m_Pivot: {x: 0, y: 1}
---- !u!114 &121011818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121011816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ee47e0035d4ad29e49cafc68888493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Core.UserInterface.BusQuestInterface
-  busQuestContainer: {fileID: 1559856833}
-  busQuestDescription: {fileID: 1521983926}
-  busQuestProgressSlider: {fileID: 281552177}
---- !u!222 &121011819
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121011816}
-  m_CullTransparentMesh: 1
 --- !u!1 &137409493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4420414068019502189, guid: cd4575cbb82729742830b25bde65754b, type: 3}
@@ -571,7 +510,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1774915411}
-  - {fileID: 121011817}
+  - {fileID: 1559856834}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1192,6 +1131,7 @@ GameObject:
   - component: {fileID: 1559856836}
   - component: {fileID: 1559856835}
   - component: {fileID: 1559856838}
+  - component: {fileID: 1559856839}
   m_Layer: 5
   m_Name: BusQuestContainer
   m_TagString: Untagged
@@ -1213,12 +1153,12 @@ RectTransform:
   m_Children:
   - {fileID: 1521983924}
   - {fileID: 281552176}
-  m_Father: {fileID: 121011817}
+  m_Father: {fileID: 450573349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -613.1533, y: -145.74963}
+  m_SizeDelta: {x: -1276.9729, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559856835
 MonoBehaviour:
@@ -1236,7 +1176,7 @@ MonoBehaviour:
     m_Left: 45
     m_Right: 45
     m_Top: 60
-    m_Bottom: 30
+    m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -1298,6 +1238,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1559856839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559856833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ee47e0035d4ad29e49cafc68888493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.UserInterface.BusQuestInterface
+  busQuestContainer: {fileID: 1559856833}
+  busQuestDescription: {fileID: 1521983926}
+  busQuestProgressSlider: {fileID: 281552177}
 --- !u!1 &1629634849
 GameObject:
   m_ObjectHideFlags: 0

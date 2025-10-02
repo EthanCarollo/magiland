@@ -20,7 +20,6 @@ namespace Core.UserInterface
             busQuestProgressSlider.maxValue = BusQuestController.Instance.maxKilledEnemy;
             if (BusQuestController.Instance != null)
                 BusQuestController.Instance.OnQuestAdvancement += UpdateUI;
-            
         }
 
         public void OnDisable()
@@ -31,8 +30,12 @@ namespace Core.UserInterface
 
         public void UpdateUI(int actualProgress, int maxProgress)
         {
-            busQuestProgressSlider.value = maxProgress;
-            busQuestProgressSlider.value = actualProgress;
+            LeanTween.value(busQuestProgressSlider.gameObject, busQuestProgressSlider.value, actualProgress, 0.5f)
+                .setOnUpdate((float val) => { busQuestProgressSlider.value = val; })
+                .setEaseOutQuad();
+
+            LeanTween.cancel(busQuestContainer);
+            LeanTween.scale(busQuestContainer, Vector3.one * 1.1f, 0.1f).setLoopPingPong(1);
         }
     }
 }
