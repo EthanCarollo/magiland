@@ -949,17 +949,7 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5175472547421100409, guid: c13da27d4d1654e4fa6a12e0eda9113a, type: 3}
-      propertyPath: exitGameButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5175472547421100409, guid: c13da27d4d1654e4fa6a12e0eda9113a, type: 3}
-      propertyPath: startGameButton
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6723465401066056882, guid: c13da27d4d1654e4fa6a12e0eda9113a, type: 3}
-    - {fileID: 8296879958429793424, guid: c13da27d4d1654e4fa6a12e0eda9113a, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
