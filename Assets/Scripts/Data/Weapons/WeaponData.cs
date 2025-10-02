@@ -11,6 +11,7 @@ namespace Data.Weapons
         public AnimationFrame[] idleFrames;
         public AnimationFrame[] animationFrames;
         public AudioClip shootSound;
+        public Sprite crossHair;
         
         public abstract (Ray lastRay, RaycastHit? lastHit) Shoot(LayerMask hitMask, LayerMask passThroughMask, PlayerWeapon playerWeapon);
     }

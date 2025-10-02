@@ -57,9 +57,17 @@ public class EnemyBehaviour : MonoBehaviour
     public void UpdateUi()
     {
         enemyLifeSlider.maxValue = enemy.maxLife;
-        enemyLifeSlider.value = currentLife;
         enemyNameText.text = enemy.enemyName;
+        
+        LeanTween.cancel(enemyLifeSlider.gameObject);
+        LeanTween.value(enemyLifeSlider.gameObject, enemyLifeSlider.value, currentLife, 0.3f)
+            .setOnUpdate((float val) =>
+            {
+                enemyLifeSlider.value = val;
+            })
+            .setEaseOutCubic();
     }
+
 
     void Death()
     {

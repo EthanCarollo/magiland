@@ -1,12 +1,15 @@
 using System.Collections;
 using Data.Weapons;
 using UnityEngine;
+using UnityEngine.UI;
+
 [RequireComponent(typeof(MeshRenderer), typeof(AudioSource))]
 public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] private WeaponData weapon;
-    [SerializeField] private LayerMask hitMask;         // ex: Enemy | Destructible
-    [SerializeField] private LayerMask passThroughMask; // ex: VFX | Trigger | Player | Projectiles
+    [SerializeField] private LayerMask hitMask;
+    [SerializeField] private LayerMask passThroughMask;
+    [SerializeField] private Image crossHairImage;
     public ParticleSystem shotgunParticle;
     private MeshRenderer weaponRenderer;
     private Material weaponMaterial;
@@ -36,6 +39,23 @@ public class PlayerWeapon : MonoBehaviour
     void SetupWeapon(WeaponData weaponData)
     {
         weaponMaterial.SetTexture("_BaseMap", weaponData.idleFrames[0].frame.texture);
+        SetupCrosshair();
+    }
+
+    void SetupCrosshair()
+    {
+        if (this.crossHairImage != null)
+        {
+            if (this.weapon.crossHair != null)
+            {
+                this.crossHairImage.enabled = true;
+                this.crossHairImage.sprite = this.weapon.crossHair;
+            }
+            else
+            {
+                this.crossHairImage.enabled = false;
+            }
+        }
     }
 
     void ResetWeapon()

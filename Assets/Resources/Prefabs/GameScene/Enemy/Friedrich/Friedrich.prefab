@@ -630,6 +630,7 @@ MonoBehaviour:
   currentLife: 0
   navMeshAgent: {fileID: 5075133929869573898}
   animator: {fileID: 2154129149138357308}
+  spriteRenderer: {fileID: 0}
   transformCanvas: {fileID: 3710699307571558603}
   enemyNameText: {fileID: 761524820773244115}
   enemyLifeSlider: {fileID: 1099030586881261538}
@@ -910,18 +911,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.43867922, b: 0.43867922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: -6515284244078706010, guid: 421fa58427d9ca0449fd1eea32eb3b90, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -963,8 +964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000053644, y: 0.50000036}
-  m_SizeDelta: {x: 13.13, y: 1}
+  m_AnchoredPosition: {x: 0.00000053644, y: 1.163}
+  m_SizeDelta: {x: 13.13, y: 2.325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6276446290121085221
 CanvasRenderer:
@@ -994,7 +995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -6515284244078706010, guid: 421fa58427d9ca0449fd1eea32eb3b90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1051,7 +1052,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.138
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

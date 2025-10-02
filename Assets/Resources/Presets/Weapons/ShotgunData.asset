@@ -25,5 +25,6 @@ MonoBehaviour:
   - frame: {fileID: 21300000, guid: 4773e67e430ab46c1aeda9744cc23865, type: 3}
     duration: 0.12
   shootSound: {fileID: 8300000, guid: 0b68608cff27e4a95a3299acd466b1ad, type: 3}
+  crossHair: {fileID: -6142374563283994760, guid: cf88d792838f8814a90af65cb7352e17, type: 3}
   spread: 4
   bullets: 6
