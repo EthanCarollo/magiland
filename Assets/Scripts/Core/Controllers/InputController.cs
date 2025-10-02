@@ -16,7 +16,5 @@ public class InputController : BaseController<InputController>
 
         float inputZ = Input.GetAxisRaw("Vertical");
         OnVerticalMovement?.Invoke(inputZ);
-
-        Debug.Log(inputX + " " + inputZ);
     }
 }

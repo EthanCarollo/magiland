@@ -1,30 +1,25 @@
 using UnityEngine;
 
-public class BaseController<T> : MonoBehaviour
-where T : Object
+public class BaseController<T> : MonoBehaviour where T : Object
 {
     private static T _instance;
     public static T Instance
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = FindFirstObjectByType<T>();
-            }
+            if (_instance == null) _instance = FindFirstObjectByType<T>();
             return _instance;
         }
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
-        if (_instance != this)
+        if (_instance != null && _instance != (Object)(T)(object)this)
         {
             Destroy(gameObject);
+            return;
         }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        _instance = (T)(object)this;
+        DontDestroyOnLoad(gameObject);
     }
 }

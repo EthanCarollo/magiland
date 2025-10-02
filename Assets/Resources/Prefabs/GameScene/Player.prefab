@@ -114,9 +114,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8474783908401679656}
+  - component: {fileID: 35712435424914704}
   - component: {fileID: 3551629070560846058}
   - component: {fileID: 1326397600195646270}
-  - component: {fileID: 35712435424914704}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -141,6 +141,29 @@ Transform:
   - {fileID: 841624563572719643}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &35712435424914704
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505234918582029258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.5556252
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.7778126, z: 0}
 --- !u!54 &3551629070560846058
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,29 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementSimpleRB
   moveSpeed: 5
---- !u!136 &35712435424914704
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505234918582029258}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.5556252
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.7778126, z: 0}
+  smoothing: 0
 --- !u!1 &7066327275220092923
 GameObject:
   m_ObjectHideFlags: 0
