@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14230055fa9493d97df63b29181d8cb, type: 3}
+  m_Name: Enflure
+  m_EditorClassIdentifier: Assembly-CSharp::Data.Intro.NarratorData
+  narratorName: Enflure
+  narratorSprite: {fileID: -8841481816463080981, guid: 807f8731b78de4ed1b4ab8e603b7ba3c, type: 3}
+  narratorTalkingAnimationFrames:
+  - frame: {fileID: 5616765796654938733, guid: 60f088ceaec5a49668199597e990b9bb, type: 3}
+    duration: 0.2
+  - frame: {fileID: 5265003234380505341, guid: eeb2bca82d82c40c7b7f576144b761c9, type: 3}
+    duration: 0.2
+  - frame: {fileID: 3902234907069635515, guid: b8cc61d68cfcf4e3499e9b179f27ce17, type: 3}
+    duration: 0.2
