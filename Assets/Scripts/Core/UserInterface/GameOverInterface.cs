@@ -10,6 +10,8 @@ public class GameOverInterface : MonoBehaviour
     [SerializeField] private float timeBeforeLoadScene;
     private AudioSource audioSource;
     private float gameOverTime;
+    private bool launchLoadingScene = false;
+    
     public void Start()
     {
         GameController.Instance.OnGameOver += Show;
@@ -27,13 +29,16 @@ public class GameOverInterface : MonoBehaviour
         slider.value = 0;
         slider.maxValue = timeBeforeLoadScene;
     }
-
+    
     void Update()
     {
         float value = timeBeforeLoadScene - (gameOverTime - Time.time);
         slider.value = value;
-        if (value >= timeBeforeLoadScene)
+        if (value >= timeBeforeLoadScene && !launchLoadingScene)
+        {
+            launchLoadingScene = true;
             SceneTransitor.Instance.LoadScene(0);
+        }
     }
 
     void OnDestroy()

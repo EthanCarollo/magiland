@@ -6,7 +6,7 @@ namespace Core.Controllers.Quest
     {
         public override int AdvancementPointGoal
         {
-            get { return 1; }
+            get { return 10; }
         }
 
         public void OnEnemyDied()

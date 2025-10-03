@@ -64,6 +64,15 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
         if (!audioSource.isPlaying) audioSource.PlayOneShot(enemy.enemySounds.GetRandom());
     }
 
+    void OnDisable()
+    {
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.OnGamePaused -= HandleGamePause;
+            GameController.Instance.OnGameOver -= HandleGameOver;
+        }
+    }
+
     void Attack()
     {
         if (Time.time - lastTimeAttacked >= enemy.enemyAttackCooldown) isAttacking = false;
@@ -122,7 +131,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
 
     void HandleGamePause(bool isPaused)
     {
-        navMeshAgent.enabled = !isPaused;
+        if(navMeshAgent.enabled) navMeshAgent.enabled = !isPaused;
     }
 
     void HandleGameOver()

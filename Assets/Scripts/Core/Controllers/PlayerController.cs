@@ -42,6 +42,15 @@ namespace Core.Controllers
             }
         }
 
+        public void OnDisable()
+        {
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.OnGamePaused -= ToggleEnablePlayer;
+                GameController.Instance.OnGameOver -= DisablePlayer;
+            }
+        }
+
         public void TakeDamage(int damage = 1)
         {
             UpdateLife(life - damage);
@@ -112,10 +121,10 @@ namespace Core.Controllers
 
         void ToggleEnablePlayer(bool disable)
         {
-            _playerMovementSimpleRB.enabled = !disable;
-            _simpleMouseLook.enabled = !disable;
-            _weaponSmoothFollow.enabled = !disable;
-            _playerWeapon.enabled = !disable;
+            if(_playerMovementSimpleRB != null) _playerMovementSimpleRB.enabled = !disable;
+            if(_simpleMouseLook != null) _simpleMouseLook.enabled = !disable;
+            if(_weaponSmoothFollow != null) _weaponSmoothFollow.enabled = !disable;
+            if(_playerWeapon != null) _playerWeapon.enabled = !disable;
             shakeCameraEnabled = !disable;
         }
 
