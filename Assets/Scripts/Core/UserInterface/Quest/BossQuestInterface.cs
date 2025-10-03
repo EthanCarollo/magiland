@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Core.UserInterface.Quest
 {
-    public class BossQuestInterface : BaseQuestInterface
+    public class BossQuestInterface : BaseQuestInterface<BossQuestController>
     {
         protected override string QuestText
         {
@@ -18,7 +18,7 @@ namespace Core.UserInterface.Quest
             get { return "gg il es mor"; }
         }
 
-        protected override BaseQuestController QuestController
+        protected override BaseQuestController<BossQuestController> QuestController
         {
             get { return BossQuestController.Instance; }
         }

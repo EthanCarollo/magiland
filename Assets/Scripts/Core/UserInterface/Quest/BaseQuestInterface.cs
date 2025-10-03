@@ -7,7 +7,7 @@ using Object = System.Object;
 
 namespace Core.UserInterface.Quest
 {
-    public abstract class BaseQuestInterface : MonoBehaviour
+    public abstract class BaseQuestInterface<T> : MonoBehaviour where T : BaseQuestController<T>
     {
         [SerializeField] protected GameObject QuestContainer;
         [SerializeField] protected TextMeshProUGUI QuestDescription;
@@ -15,7 +15,7 @@ namespace Core.UserInterface.Quest
         
         protected abstract string QuestText { get; }
         protected abstract string EndQuestText { get; }
-        protected abstract BaseQuestController QuestController { get; }
+        protected abstract BaseQuestController<T> QuestController { get; }
         
         
         private void Start()

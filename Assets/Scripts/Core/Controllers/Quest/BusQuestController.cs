@@ -2,7 +2,7 @@
 
 namespace Core.Controllers.Quest
 {
-    public class BusQuestController : BaseQuestController
+    public class BusQuestController : BaseQuestController<BusQuestController>
     {
         public override int AdvancementPointGoal
         {

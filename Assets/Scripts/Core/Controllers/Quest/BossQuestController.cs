@@ -2,7 +2,7 @@
 
 namespace Core.Controllers.Quest
 {
-    public class BossQuestController : BaseQuestController
+    public class BossQuestController : BaseQuestController<BossQuestController> 
     {
         public override int AdvancementPointGoal {
             get { return 1; }

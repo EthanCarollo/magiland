@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Core.Controllers.Quest
 {
-    public abstract class BaseQuestController : BaseController<BaseQuestController>
+    public abstract class BaseQuestController<T> : BaseController<T> where T : Object
     {
         public delegate void QuestEnd();
         public event QuestEnd OnQuestEnd;

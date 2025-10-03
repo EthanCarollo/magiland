@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Core.UserInterface.Quest
 {
-    public class BusQuestInterface : BaseQuestInterface
+    public class BusQuestInterface : BaseQuestInterface<BusQuestController>
     {
         protected override string QuestText
         {
@@ -18,7 +18,7 @@ namespace Core.UserInterface.Quest
             get { return "gg i son mor, mtn le bus est unlock, vzy"; }
         }
 
-        protected override BaseQuestController QuestController
+        protected override BaseQuestController<BusQuestController> QuestController
         {
             get { return BusQuestController.Instance; }
         }

@@ -1,3 +1,4 @@
+using System;
 using Data.Enemy;
 using Extensions;
 using UnityEngine;
@@ -48,12 +49,20 @@ namespace Core.Enemy
             }
             LeanTween.delayedCall(4f, () =>
             {
-                LeanTween.moveY(gameObject, transform.position.y + 200f, 2f)
-                    .setEaseInOutSine()
-                    .setOnComplete((() =>
-                    {
-                        transform.position = new Vector3(transform.position.x, transform.position.y + 200f, 0);
-                    }));
+                if (gameObject == null) return;
+                try
+                {
+                    LeanTween.moveY(gameObject, transform.position.y + 200f, 2f)
+                        .setEaseInOutSine()
+                        .setOnComplete((() =>
+                        {
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 200f, 0);
+                        }));
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Cannot update death sprite of BaseEnemy, maybe scene has been swapped");
+                }
             });
             OnDeath();
         }
