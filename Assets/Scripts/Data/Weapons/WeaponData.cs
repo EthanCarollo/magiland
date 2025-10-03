@@ -13,6 +13,7 @@ namespace Data.Weapons
         public AnimationFrame[] animationFrames;
         public AudioClip shootSound;
         public Sprite crossHair;
+        public Sprite weaponIcon;
 
         public abstract void OnShoot(PlayerWeapon playerWeapon);
         public abstract void OnShootHeld(PlayerWeapon playerWeapon);

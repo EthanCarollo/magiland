@@ -39,7 +39,7 @@ namespace Core.Controllers
 
         public void UpdateLife(int newLife)
         {
-            life = newLife;
+            life = Mathf.Max(newLife, 0);
             LifeChanged?.Invoke(life);
         }
         

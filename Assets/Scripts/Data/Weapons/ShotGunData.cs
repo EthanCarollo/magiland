@@ -7,10 +7,6 @@ namespace Data.Weapons
     [CreateAssetMenu(fileName = "ShotgunData", menuName = "Weapons/ShotgunData")]
     public class ShotGunData : WeaponData
     {
-        [Header("Shotgun Settings")]
-        public int spread;
-        public int bullets;
-
         public override void OnShoot(PlayerWeapon playerWeapon)
         {
             playerWeapon.shotgunParticle.Stop();

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FuckMachineData
   m_EditorClassIdentifier: Assembly-CSharp::Data.Weapons.GunData
   weaponName: FuckMachine
-  damage: 0
+  damage: 40
   idleFrames:
   - frame: {fileID: -1965926327353472836, guid: 917f0a6ff329543ae97ea536aaceb724, type: 3}
     duration: 0.2
@@ -27,3 +27,5 @@ MonoBehaviour:
   - frame: {fileID: -2100430062291481168, guid: 72b5a1a0cd8f34012acf4fcf76b9cabf, type: 3}
     duration: 0.05
   shootSound: {fileID: 0}
+  crossHair: {fileID: 0}
+  weaponIcon: {fileID: -8126336369406126515, guid: 67c1b0562998849a9a9e9f8158c58699, type: 3}

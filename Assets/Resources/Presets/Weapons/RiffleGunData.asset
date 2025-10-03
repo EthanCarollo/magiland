@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RiffleGunData
   m_EditorClassIdentifier: Assembly-CSharp::Data.Weapons.RiffleGunData
   weaponName: RiffleGun
-  damage: 30
+  damage: 4
   idleFrames:
   - frame: {fileID: -2917916467204390116, guid: bc4ef19b304ed4f9096330eda93cca2f, type: 3}
     duration: 0
@@ -26,4 +26,5 @@ MonoBehaviour:
     duration: 0.02
   shootSound: {fileID: 8300000, guid: e71e085047b2d461f8bb96b8765288a1, type: 3}
   crossHair: {fileID: -6142374563283994760, guid: cf88d792838f8814a90af65cb7352e17, type: 3}
+  weaponIcon: {fileID: -7639976913076666315, guid: 67c1b0562998849a9a9e9f8158c58699, type: 3}
   salvo: 3
