@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8110279479505434363}
   - component: {fileID: 9007160227575548696}
-  - component: {fileID: 7889390151275342046}
+  - component: {fileID: 2903197681962119665}
   m_Layer: 0
   m_Name: InteractZone
   m_TagString: Untagged
@@ -56,7 +56,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7889390151275342046
+--- !u!114 &2903197681962119665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,9 +65,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 285098056465629357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a9493bda9349b6881691d057c2d8e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 56fd02a60d86451a809697734887efd0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Bus.WorldCanvasTrigger
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Interactions.BusSceneInteraction
   triggerZone: {fileID: 9007160227575548696}
   worldCanvasGui: {fileID: 1169087177433834153}
   targetLayers:

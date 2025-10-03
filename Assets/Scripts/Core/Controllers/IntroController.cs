@@ -27,6 +27,9 @@ namespace Core.Controllers
 
         public void Start()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            
             introPanel.SetActive(false);
             StartIntroduction(introductions.GetRandom());
         }
