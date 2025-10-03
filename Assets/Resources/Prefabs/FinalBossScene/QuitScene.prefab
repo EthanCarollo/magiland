@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7462288255017460998}
   - component: {fileID: 8336720629076605748}
   - component: {fileID: 4764992173470898408}
+  - component: {fileID: 5676008368770842027}
   m_Layer: 0
   m_Name: InteractZone
   m_TagString: Untagged
@@ -101,11 +102,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb08cf4d2b44467c9876eb3a149b952a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interactions.BossSceneInteraction
-  triggerZone: {fileID: 8336720629076605748}
   worldCanvasGui: {fileID: 1505682789412904915}
+--- !u!114 &5676008368770842027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121084737231797183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219c46b6a259a4f288ed4407345fa333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneEnter
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
+  PlayerInside: 0
 --- !u!1 &2395522388512946529
 GameObject:
   m_ObjectHideFlags: 0
