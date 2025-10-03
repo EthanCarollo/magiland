@@ -38,7 +38,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     public void Update()
     {
         base.Update();
-        if (IsDead) return;
+        if (IsDead || (GameController.Instance != null && GameController.Instance.IsGamePaused)) return;
 
         navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
 
