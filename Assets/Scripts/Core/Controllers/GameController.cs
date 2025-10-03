@@ -1,5 +1,6 @@
 using Core.Controllers;
 using Data.Player;
+using NUnit.Framework;
 using UnityEngine;
 
 public class GameController : BaseController<GameController>
@@ -22,26 +23,31 @@ public class GameController : BaseController<GameController>
 
     public void ResumeGame()
     {
+        if (IsGameOver) return;
         IsGamePaused = false;
-        HandlePause();
+        HandleTimePause();
+        OnGamePaused?.Invoke(IsGamePaused);
     }
 
     public void PauseGame()
     {
+        if (IsGameOver) return;
         IsGamePaused = true;
-        HandlePause();
+        HandleTimePause();
+        OnGamePaused?.Invoke(IsGamePaused);
     }
 
     public void TogglePauseGame()
     {
+        if (IsGameOver) return;
         IsGamePaused = !IsGamePaused;
-        HandlePause();
+        HandleTimePause();
+        OnGamePaused?.Invoke(IsGamePaused);
     }
 
-    void HandlePause()
+    void HandleTimePause()
     {
         Time.timeScale = IsGamePaused ? 0 : 1;
-        OnGamePaused?.Invoke(IsGamePaused);
     }
 
     void OnLifeChanged(int life)

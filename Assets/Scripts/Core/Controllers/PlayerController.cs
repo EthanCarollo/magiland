@@ -31,6 +31,16 @@ namespace Core.Controllers
         public int life = 5;
         public delegate void OnLifeChange(int newLife);
         public event OnLifeChange LifeChanged;
+        private bool shakeCameraEnabled = true;
+
+        public void Start()
+        {
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.OnGamePaused += ToggleEnablePlayer;
+                GameController.Instance.OnGameOver += DisablePlayer;
+            }
+        }
 
         public void TakeDamage(int damage = 1)
         {
@@ -45,7 +55,7 @@ namespace Core.Controllers
         
         public void ShakeCamera(float shakeMagnitude = 0.3f, float shakeDuration = 0.1f)
         {
-            if (GameController.Instance != null && GameController.Instance.IsGamePaused) return;
+            if (!shakeCameraEnabled) return;
             if (shakeCoroutine != null)
                 StopCoroutine(shakeCoroutine);
 
@@ -89,6 +99,24 @@ namespace Core.Controllers
         public WeaponData GetCurrentWeapon()
         {
             return _playerWeapon.weapon;
+        }
+
+        void DisablePlayer()
+        {
+            _playerMovementSimpleRB.enabled = false;
+            _simpleMouseLook.enabled = false;
+            _weaponSmoothFollow.enabled = false;
+            _playerWeapon.enabled = false;
+            shakeCameraEnabled = false;
+        }
+
+        void ToggleEnablePlayer(bool disable)
+        {
+            _playerMovementSimpleRB.enabled = !disable;
+            _simpleMouseLook.enabled = !disable;
+            _weaponSmoothFollow.enabled = !disable;
+            _playerWeapon.enabled = !disable;
+            shakeCameraEnabled = !disable;
         }
 
 #if UNITY_EDITOR

@@ -121,7 +121,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void PerformShoot()
     {
-        if (isShooting || (GameController.Instance != null && GameController.Instance.IsGamePaused)) return;
+        if (isShooting) return;
     
         isShooting = true;
 

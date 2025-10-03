@@ -9,7 +9,10 @@ public class SimpleMouseLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
 
+    void OnEnable()
+    {
         InputController.Instance.OnLook += OnLook;
     }
 

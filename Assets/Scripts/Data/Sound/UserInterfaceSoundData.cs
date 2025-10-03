@@ -10,5 +10,6 @@ namespace Data.Sound
         public AudioClip hoverButtonAudioClip;
         public AudioClip clickButtonAudioClip;
         public AudioClip openPopupAudioClip;
+        public AudioClip gameOverAudioClip;
     }
 }

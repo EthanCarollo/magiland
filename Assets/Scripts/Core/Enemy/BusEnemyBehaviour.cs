@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class BusEnemyBehaviour : BaseEnemyBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
-    
+
     [Header("World UI")]
     [SerializeField] private Transform transformCanvas;
     [SerializeField] private TextMeshProUGUI enemyNameText;
@@ -27,18 +27,25 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    
+
     void Start()
     {
         navMeshAgent.speed = enemy.enemySpeed;
         navMeshAgent.stoppingDistance = enemy.enemyRange;
+
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.OnGamePaused += HandleGamePause;
+            GameController.Instance.OnGameOver += HandleGameOver;
+        }
+
         base.Start();
     }
 
     public void Update()
     {
         base.Update();
-        if (IsDead || (GameController.Instance != null && GameController.Instance.IsGamePaused)) return;
+        if (IsDead || (GameController.Instance != null && (GameController.Instance.IsGamePaused || GameController.Instance.IsGameOver))) return;
 
         navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
 
@@ -61,7 +68,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     {
         if (Time.time - lastTimeAttacked >= enemy.enemyAttackCooldown) isAttacking = false;
         if (isAttacking) return;
-        
+
         isAttacking = true;
         lastTimeAttacked = Time.time;
 
@@ -74,17 +81,17 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
         PlayerController.Instance.TakeDamage();
     }
 
-    
+
     protected override void OnBeforeTakeDamage()
     {
-            
+
     }
 
     protected override void OnAfterTakeDamage()
     {
-            
+
     }
-    
+
     protected override void OnUpdateUi()
     {
         enemyLifeSlider.maxValue = enemy.maxLife;
@@ -102,7 +109,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     protected override void OnDeath()
     {
         navMeshAgent.isStopped = true;
-        
+
         animator.SetBool("IsMoving", false);
         this.GetComponent<Animator>().enabled = false;
         this.GetComponent<Collider>().enabled = false;
@@ -111,6 +118,16 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
         transformCanvas.gameObject.SetActive(false);
         if (BusQuestController.Instance != null)
             BusQuestController.Instance.AdvanceQuest();
+    }
+
+    void HandleGamePause(bool isPaused)
+    {
+        navMeshAgent.enabled = !isPaused;
+    }
+
+    void HandleGameOver()
+    {
+        HandleGamePause(true);
     }
 
 }
