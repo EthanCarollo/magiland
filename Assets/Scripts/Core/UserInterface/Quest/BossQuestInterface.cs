@@ -15,7 +15,7 @@ namespace Core.UserInterface.Quest
 
         protected override string EndQuestText
         {
-            get { return "gg il es mor"; }
+            get { return "gg il es mor, va là où il es mor pr finir le je"; }
         }
 
         protected override BaseQuestController<BossQuestController> QuestController
