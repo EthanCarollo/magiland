@@ -9,5 +9,6 @@ namespace Data.Sound
         [Header("Buttons Sound")]
         public AudioClip hoverButtonAudioClip;
         public AudioClip clickButtonAudioClip;
+        public AudioClip openPopupAudioClip;
     }
 }

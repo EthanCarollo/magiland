@@ -41,6 +41,7 @@ namespace Core.Controllers
         
         public void ShakeCamera()
         {
+            if (GameController.Instance != null && GameController.Instance.IsGamePaused) return;
             if (shakeCoroutine != null)
                 StopCoroutine(shakeCoroutine);
 

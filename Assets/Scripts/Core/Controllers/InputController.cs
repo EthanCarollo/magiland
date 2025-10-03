@@ -17,11 +17,14 @@ public class InputController : BaseController<InputController>
     public delegate void Interact();
     public event Interact OnInteract;
 
+    public delegate void Pause();
+    public event Pause OnPause;
+
     [Header("Input State")]
     public bool isUsingController = false;  // true = controller, false = keyboard/mouse
     public float inputSwitchCooldown = 0.2f;
-
     private float lastInputTime = 0f;
+
 
     void Update()
     {
@@ -75,6 +78,8 @@ public class InputController : BaseController<InputController>
         if (Input.GetButtonDown("Fire1")) OnShoot?.Invoke();
 
         if (Input.GetKeyDown(KeyCode.E)) OnInteract?.Invoke();
+
+        if (Input.GetButtonDown("Pause")) OnPause?.Invoke();
     }
 
     void HandleControllerInputs()
@@ -91,5 +96,7 @@ public class InputController : BaseController<InputController>
         if (Input.GetButtonDown("Fire1")) OnShoot?.Invoke();
 
         if (Input.GetButtonDown("Interact")) OnInteract?.Invoke();
+
+        if (Input.GetButtonDown("Pause")) OnPause?.Invoke();
     }
 }

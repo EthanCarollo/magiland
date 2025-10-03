@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Data.Sound.UserInterfaceSoundData
   hoverButtonAudioClip: {fileID: 8300000, guid: 375a9aec593b84600ae0dc84c4da4580, type: 3}
   clickButtonAudioClip: {fileID: 8300000, guid: 9389f208f855d4a9291c317dbd19ffdd, type: 3}
+  openPopupAudioClip: {fileID: 8300000, guid: a098ee0f70b4a42c3803715930fd3716, type: 3}
