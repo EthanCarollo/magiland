@@ -14,6 +14,9 @@ public class InputController : BaseController<InputController>
     public delegate void Shoot();
     public event Shoot OnShoot;
 
+    public delegate void ShootHeld(bool isHeld);
+    public event ShootHeld OnShootHeld;
+
     public delegate void Interact();
     public event Interact OnInteract;
 
@@ -74,6 +77,12 @@ public class InputController : BaseController<InputController>
 
         if (Input.GetButtonDown("Fire1")) OnShoot?.Invoke();
 
+        // Détecte si Fire1 est maintenu ou relâché
+        if (Input.GetButton("Fire1"))
+            OnShootHeld?.Invoke(true);
+        else if (Input.GetButtonUp("Fire1"))
+            OnShootHeld?.Invoke(false);
+
         if (Input.GetKeyDown(KeyCode.E)) OnInteract?.Invoke();
     }
 
@@ -89,6 +98,12 @@ public class InputController : BaseController<InputController>
         if (Mathf.Abs(joyX) > 0.1f || Mathf.Abs(joyY) > 0.1f) OnLook?.Invoke(joyX, joyY);
 
         if (Input.GetButtonDown("Fire1")) OnShoot?.Invoke();
+
+        // Détecte si Fire1 est maintenu ou relâché (manette)
+        if (Input.GetButton("Fire1"))
+            OnShootHeld?.Invoke(true);
+        else if (Input.GetButtonUp("Fire1"))
+            OnShootHeld?.Invoke(false);
 
         if (Input.GetButtonDown("Interact")) OnInteract?.Invoke();
     }

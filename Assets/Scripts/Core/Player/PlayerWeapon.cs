@@ -11,14 +11,20 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private LayerMask passThroughMask;
     [SerializeField] private Image crossHairImage;
     public ParticleSystem shotgunParticle;
+    public ParticleSystem rifflegunParticle;
+    
+    [Header("Auto Fire Settings")]
+    [SerializeField] private float fireRate = 0.1f;
+    
     private MeshRenderer weaponRenderer;
     private Material weaponMaterial;
     private AudioSource audioSource;
     private bool isShooting = false;
+    private bool isHoldingFire = false;
+    private float nextFireTime = 0f;
 
-    // Gizmos raycast
-    private Ray lastRay;               // 🔵 on stocke le dernier ray tiré
-    private RaycastHit lastHit;        // 🔵 dernier impact
+    private Ray lastRay;
+    private RaycastHit lastHit;
     private bool hasHit;
 
     void Awake()
@@ -32,8 +38,20 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnEnable()
     {
-        if(InputController.Instance != null) 
+        if(InputController.Instance != null)
+        {
             InputController.Instance.OnShoot += OnShoot;
+            InputController.Instance.OnShootHeld += OnShootHeld;
+        }
+    }
+
+    void Update()
+    {
+        if (isHoldingFire && weapon.SupportsAutoFire() && Time.time >= nextFireTime)
+        {
+            PerformAutoShoot();
+            nextFireTime = Time.time + fireRate;
+        }
     }
 
     void SetupWeapon(WeaponData weaponData)
@@ -64,7 +82,33 @@ public class PlayerWeapon : MonoBehaviour
         SetupWeapon(weapon);
     }
 
+    void OnShootHeld(bool isHeld)
+    {
+        isHoldingFire = isHeld;
+        
+        if (!isHeld)
+        {
+            nextFireTime = 0f;
+        }
+    }
+
     void OnShoot()
+    {
+        if (!weapon.SupportsAutoFire())
+        {
+            PerformShoot();
+        }
+        else
+        {
+            if (Time.time >= nextFireTime)
+            {
+                PerformShoot();
+                nextFireTime = Time.time + fireRate;
+            }
+        }
+    }
+
+    void PerformShoot()
     {
         if (isShooting) return;
     
@@ -89,6 +133,49 @@ public class PlayerWeapon : MonoBehaviour
             }
 
             lastHit = hit.Value;
+            hasHit = true;
+        }
+        else
+        {
+            hasHit = false;
+        }
+
+        if (weapon.shootSound != null)
+            audioSource.PlayOneShot(weapon.shootSound);
+
+        StartCoroutine(AnimateWeapon(weapon.animationFrames));
+    }
+
+    void PerformAutoShoot()
+    {
+        if (isShooting) return;
+        
+        isShooting = true;
+        
+        (Ray ray, RaycastHit? hit) = weapon.ShootHeld(hitMask, passThroughMask, this);
+        lastRay = ray;
+
+        if (hit.HasValue)
+        {
+            SpriteRenderer spriteRenderer = hit.Value.collider.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                LeanTween.cancel(spriteRenderer.gameObject);
+                LeanTween.color(spriteRenderer.gameObject, Color.red, 0.2f)
+                    .setEaseInOutSine()
+                    .setOnComplete(() =>
+                    {
+                        LeanTween.color(spriteRenderer.gameObject, Color.white, 0.8f)
+                            .setEaseInOutSine();
+                    });
+            }
+
+            lastHit = hit.Value;
+            hasHit = true;
+        }
+        else
+        {
+            hasHit = false;
         }
 
         if (weapon.shootSound != null)
@@ -110,27 +197,26 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnDisable()
     {
-        if(InputController.Instance != null) 
+        if(InputController.Instance != null)
+        {
             InputController.Instance.OnShoot -= OnShoot;
+            InputController.Instance.OnShootHeld -= OnShootHeld;
+        }
     }
 
     void OnDrawGizmos()
     {
-        // Si on a tiré, dessine le dernier rayon
         if (lastRay.direction != Vector3.zero)
         {
             Gizmos.color = Color.red;
 
             if (hasHit)
             {
-                // Ligne jusqu’au point d’impact
                 Gizmos.DrawLine(lastRay.origin, lastHit.point);
-                // Sphère au point d’impact
                 Gizmos.DrawSphere(lastHit.point, 0.1f);
             }
             else
             {
-                // Ligne "infinie" (par ex. 100 unités)
                 Gizmos.DrawLine(lastRay.origin, lastRay.origin + lastRay.direction * 100f);
             }
         }

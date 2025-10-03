@@ -22,10 +22,6 @@ namespace Core.Controllers
         [SerializeField] private PlayerMovementPhysics _playerMovementSimpleRB;
         [SerializeField] private Camera _camera;
 
-        [Header("Shake Settings")]
-        [SerializeField] private float shakeDuration = 0.3f;
-        [SerializeField] private float shakeMagnitude = 0.1f;
-
         private Vector3 originalPos;
         private Coroutine shakeCoroutine;
         
@@ -39,21 +35,21 @@ namespace Core.Controllers
             LifeChanged?.Invoke(life);
         }
         
-        public void ShakeCamera()
+        public void ShakeCamera(float shakeMagnitude = 0.3f, float shakeDuration = 0.1f)
         {
             if (shakeCoroutine != null)
                 StopCoroutine(shakeCoroutine);
 
-            shakeCoroutine = StartCoroutine(DoCameraShake());
+            shakeCoroutine = StartCoroutine(DoCameraShake(shakeMagnitude, shakeDuration));
         }
 
-        private IEnumerator DoCameraShake()
+        private IEnumerator DoCameraShake(float shakeMagnitude, float duration)
         {
             originalPos = _camera.transform.localPosition;
 
             float elapsed = 0.0f;
 
-            while (elapsed < shakeDuration)
+            while (elapsed < duration)
             {
                 float offsetX = Random.Range(-1f, 1f) * shakeMagnitude;
                 float offsetY = Random.Range(-1f, 1f) * shakeMagnitude;

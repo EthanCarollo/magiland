@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7986ca897cef44af9d2636c842ceb251, type: 3}
+  m_Name: RiffleGunData
+  m_EditorClassIdentifier: Assembly-CSharp::Data.Weapons.RiffleGunData
+  weaponName: RiffleGun
+  damage: 4
+  idleFrames:
+  - frame: {fileID: -2917916467204390116, guid: bc4ef19b304ed4f9096330eda93cca2f, type: 3}
+    duration: 0
+  animationFrames:
+  - frame: {fileID: -8348047456330621773, guid: bf5ada60bf4cf4aac8d4a9607992bc2b, type: 3}
+    duration: 0.03
+  - frame: {fileID: 5509502767411885038, guid: 5ccde270bb8754fa5b0450944d974e4d, type: 3}
+    duration: 0.03
+  - frame: {fileID: -3771786581221474227, guid: c3fb672dae6c6481c8d1652d0adee0b9, type: 3}
+    duration: 0.03
+  shootSound: {fileID: 8300000, guid: e71e085047b2d461f8bb96b8765288a1, type: 3}
+  crossHair: {fileID: -6142374563283994760, guid: cf88d792838f8814a90af65cb7352e17, type: 3}
+  salvo: 3
