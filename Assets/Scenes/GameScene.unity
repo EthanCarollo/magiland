@@ -692,6 +692,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8524931458849774804, guid: 1aa53c36e4c87477a97c51275fc03970, type: 3}
+      propertyPath: life
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -733,7 +737,7 @@ MonoBehaviour:
   - {fileID: 4659610693648200294, guid: 589ae44bc6cd44915a84d4a8a392e1cd, type: 3}
   sampleMaxDistance: 2
   maxAttempts: 20
-  spawnInterval: 5
+  spawnInterval: 0.5
   minDistanceFromPlayer: 10
   player: {fileID: 0}
 --- !u!4 &1308756807
@@ -1838,7 +1842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316359189230802371, guid: 28b8102f31854d0409eab400290baabf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0013427734
+      value: -0.0014648438
       objectReference: {fileID: 0}
     - target: {fileID: 6316359189230802371, guid: 28b8102f31854d0409eab400290baabf, type: 3}
       propertyPath: m_AnchoredPosition.y

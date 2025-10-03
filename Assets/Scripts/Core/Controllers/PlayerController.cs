@@ -31,7 +31,12 @@ namespace Core.Controllers
 
         public void TakeDamage(int damage = 1)
         {
-            life -= damage;
+            UpdateLife(life - damage);
+        }
+
+        public void UpdateLife(int newLife)
+        {
+            life = newLife;
             LifeChanged?.Invoke(life);
         }
         

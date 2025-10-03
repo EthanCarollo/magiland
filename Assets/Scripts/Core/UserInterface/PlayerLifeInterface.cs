@@ -9,9 +9,11 @@ namespace Core.UserInterface
     {
         [SerializeField] private GameObject lifeUiObject;
         [SerializeField] private AnimationFrame[] deathAnimation;
+        public static PlayerLifeInterface Instance;
 
         void Start()
         {
+            Instance = this;
             UpdateLifeUI(PlayerController.Instance.life);
             PlayerController.Instance.LifeChanged += UpdateLifeUI;
         }
@@ -22,7 +24,7 @@ namespace Core.UserInterface
                 PlayerController.Instance.LifeChanged -= UpdateLifeUI;
         }
 
-        private void UpdateLifeUI(int newLife)
+        public void UpdateLifeUI(int newLife)
         {
             int currentChildren = transform.childCount;
 
