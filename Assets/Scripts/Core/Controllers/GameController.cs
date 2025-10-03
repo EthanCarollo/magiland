@@ -7,9 +7,15 @@ public class GameController : BaseController<GameController>
     public bool IsGamePaused = false;
     public delegate void GamePaused(bool isPaused);
     public event GamePaused OnGamePaused;
+    public bool IsGameOver = false;
+    public delegate void Gameover();
+    public event Gameover OnGameOver;
 
     public void Start()
     {
+        if (PlayerController.Instance != null)
+            PlayerController.Instance.LifeChanged += OnLifeChanged;
+
         if (InputController.Instance != null)
             InputController.Instance.OnPause += TogglePauseGame;
     }
@@ -38,4 +44,14 @@ public class GameController : BaseController<GameController>
         OnGamePaused?.Invoke(IsGamePaused);
     }
 
+    void OnLifeChanged(int life)
+    {
+        if (life <= 0) GameOver();
+    }
+
+    void GameOver()
+    {
+        IsGameOver = true;
+        OnGameOver?.Invoke();
+    }
 }
