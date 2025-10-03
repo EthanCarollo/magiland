@@ -4,6 +4,7 @@ using Core.Scene;
 using Data.Player;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : BaseController<GameController>
 {
@@ -70,6 +71,13 @@ public class GameController : BaseController<GameController>
 
     void HandleTimePause()
     {
+        Debug.Log("Handle time pause called");
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Time.timeScale = 1;
+            return;
+        }
+
         Time.timeScale = IsGamePaused ? 0 : 1;
     }
 
