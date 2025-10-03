@@ -1,4 +1,5 @@
 using Core.Controllers;
+using Core.Enemy;
 using Core.Quest;
 using Data.Enemy;
 using Extensions;
@@ -8,15 +9,9 @@ using UnityEngine.AI;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
-public class EnemyBehaviour : MonoBehaviour
+public class BusEnemyBehaviour : BaseEnemyBehaviour
 {
-    [Header("References & Data")]
-    [SerializeField] private EnemyData enemy;
-    [SerializeField] private float currentLife;
     [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    private bool isDead;
     
     [Header("World UI")]
     [SerializeField] private Transform transformCanvas;
@@ -28,12 +23,13 @@ public class EnemyBehaviour : MonoBehaviour
         currentLife = enemy.maxLife;
         navMeshAgent.speed = enemy.enemySpeed;
         navMeshAgent.stoppingDistance = enemy.enemyRange;
-        UpdateUi();
+        base.Start();
     }
 
     public void Update()
     {
-        if (isDead) return;
+        base.Update();
+        if (IsDead) return;
 
         navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
 
@@ -43,19 +39,18 @@ public class EnemyBehaviour : MonoBehaviour
         animator.SetBool("IsMoving", isMoving);
     }
 
-    public void TakeDamage(float damage)
+    
+    protected override void OnBeforeTakeDamage()
     {
-        if (isDead) return;
-
-        currentLife -= damage;
-        UpdateUi();
-        if (currentLife <= 0)
-        {
-            Death();
-        }
+            
     }
 
-    public void UpdateUi()
+    protected override void OnAfterTakeDamage()
+    {
+            
+    }
+    
+    protected override void OnUpdateUi()
     {
         enemyLifeSlider.maxValue = enemy.maxLife;
         enemyNameText.text = enemy.enemyName;
@@ -69,34 +64,20 @@ public class EnemyBehaviour : MonoBehaviour
             .setEaseOutCubic();
     }
 
-
-    void Death()
+    protected override void OnDeath()
     {
-        isDead = true;
         navMeshAgent.isStopped = true;
+        
         animator.SetBool("IsMoving", false);
         this.GetComponent<Animator>().enabled = false;
+        this.GetComponent<Collider>().enabled = false;
         this.GetComponent<SpriteSkin>().enabled = false;
         this.GetComponent<NavMeshAgent>().enabled = false;
-        this.GetComponent<Collider>().enabled = false;
-        if (enemy.deadBodies.Count > 0)
-        {
-            spriteRenderer.sprite = enemy.deadBodies.GetRandom();
-        }
         transformCanvas.gameObject.SetActive(false);
-        LeanTween.delayedCall(4f, () =>
-        {
-            LeanTween.moveY(gameObject, transform.position.y + 200f, 2f)
-                .setEaseInOutSine()
-                .setOnComplete((() =>
-                {
-                    transform.position = new Vector3(transform.position.x, transform.position.y + 200f, 0);
-                }));
-        });
-
         if (BusQuestController.Instance != null)
         {
             BusQuestController.Instance.OnEnemyDied();
         }
     }
+
 }

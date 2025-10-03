@@ -1,3 +1,4 @@
+using Core.Enemy;
 using UnityEngine;
 
 namespace Data.Weapons
@@ -21,7 +22,7 @@ namespace Data.Weapons
             if (hit.HasValue)
             {
                 // Exemple : appliquer des dégâts si c’est un ennemi
-                hit.Value.collider.GetComponent<EnemyBehaviour>()?.TakeDamage(damage);
+                hit.Value.collider.GetComponent<BaseEnemyBehaviour>()?.TakeDamage(damage);
             }
 
             return (ray, hit);
