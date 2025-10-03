@@ -1,4 +1,6 @@
+using System;
 using Core.Controllers;
+using Core.Scene;
 using Data.Player;
 using NUnit.Framework;
 using UnityEngine;
@@ -19,6 +21,27 @@ public class GameController : BaseController<GameController>
 
         if (InputController.Instance != null)
             InputController.Instance.OnPause += TogglePauseGame;
+        
+        SceneTransitor.Instance.OnLoadNewScene += OnNewScene;
+        SceneTransitor.Instance.OnEndLoadNewScene += OnEndLoadNewScene;
+    }
+
+    public void OnDisable()
+    {
+        if(SceneTransitor.Instance != null)
+            SceneTransitor.Instance.OnLoadNewScene -= OnNewScene;
+    }
+
+    public void OnEndLoadNewScene() {
+        if (FindAnyObjectByType<PlayerController>() != null)
+            FindAnyObjectByType<PlayerController>().LifeChanged += OnLifeChanged;
+    }
+
+    public void OnNewScene()
+    {
+        IsGameOver = false;
+        IsGamePaused = false;
+        HandleTimePause();
     }
 
     public void ResumeGame()

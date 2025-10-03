@@ -1,4 +1,5 @@
-﻿using Core.Controllers;
+﻿using System;
+using Core.Controllers;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -54,11 +55,20 @@ namespace Core.UserInterface
             {
                 foreach (var frame in deathAnimation)
                 {
-                    sr.sprite = frame.frame;
+                    try
+                    {
+                        sr.sprite = frame.frame;
+                    } catch (Exception e)
+                    {
+                        Debug.Log("Animation of heart destroyed had a little bug...");
+                        Debug.LogWarning(e.Message);
+                    }
                     yield return new WaitForSeconds(frame.duration);
                 }
             }
             Destroy(heart);
+            
+            
         }
     }
 }

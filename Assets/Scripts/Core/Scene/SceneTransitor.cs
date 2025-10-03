@@ -8,6 +8,9 @@ namespace Core.Scene
         
         public delegate void LoadNewScene();
         public LoadNewScene OnLoadNewScene;
+        
+        public delegate void EndLoadNewScene();
+        public EndLoadNewScene OnEndLoadNewScene;
     
         public GameObject loadingScreen;
     
@@ -15,14 +18,21 @@ namespace Core.Scene
             OnLoadNewScene?.Invoke();
             var loadingScreenPrefab = GameObject.Instantiate(loadingScreen);
             loadingScreenPrefab.GetComponent<LoadingScreenController>()
-                .StartToLoadScene(sceneToLoad);
+                .StartToLoadScene(sceneToLoad, () =>
+                {
+                    OnEndLoadNewScene?.Invoke();
+                });
         }
     
         public void LoadScene(int sceneToLoad, Action onEndCallback){
             OnLoadNewScene?.Invoke();
             var loadingScreenPrefab = GameObject.Instantiate(loadingScreen);
             loadingScreenPrefab.GetComponent<LoadingScreenController>()
-                .StartToLoadScene(sceneToLoad, onEndCallback);
+                .StartToLoadScene(sceneToLoad, () =>
+                {
+                    onEndCallback?.Invoke();
+                    OnEndLoadNewScene?.Invoke();
+                });
         }
     }
 }
