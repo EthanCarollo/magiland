@@ -1,3 +1,4 @@
+using Core.Controllers;
 using Core.Scene;
 using Data.Player;
 using Data.Sound;
@@ -64,7 +65,10 @@ public class PauseInterface : MonoBehaviour
         {
             audioSource.PlayOneShot(UserInterfaceSoundData.Instance.clickButtonAudioClip);
             GameController.Instance.ResumeGame();
-            SceneTransitor.Instance.LoadScene(0);
+            SceneTransitor.Instance.LoadScene(0, (() =>
+            {
+                Destroy(PlayerController.Instance?.transform.root.gameObject);
+            }));
         }
         else
         {

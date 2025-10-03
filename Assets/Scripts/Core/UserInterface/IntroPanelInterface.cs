@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Core.Controllers
 {
-    public class IntroController : BaseController<IntroController>
+    public class IntroPanelInterface : MonoBehaviour
     {
         [SerializeField] private List<IntroNarratorData> introductions;
 

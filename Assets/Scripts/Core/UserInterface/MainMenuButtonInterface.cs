@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Core.Scene
 {
-    public class PanelController : BaseController<PanelController>
+    public class MainMenuButtonInterface : MonoBehaviour
     {
         [SerializeField] private AudioSource audioSource;
         

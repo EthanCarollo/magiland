@@ -1,4 +1,5 @@
 using System.Collections;
+using Core.Controllers;
 using Core.Scene;
 using Data.Sound;
 using UnityEngine;
@@ -37,7 +38,11 @@ public class GameOverInterface : MonoBehaviour
         if (value >= timeBeforeLoadScene && !launchLoadingScene)
         {
             launchLoadingScene = true;
-            SceneTransitor.Instance.LoadScene(0);
+            
+            SceneTransitor.Instance.LoadScene(0, (() =>
+            {
+                Destroy(PlayerController.Instance?.transform.root.gameObject);
+            }));
         }
     }
 

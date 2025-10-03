@@ -1,3 +1,4 @@
+using System;
 using Core.Controllers;
 using Core.Enemy;
 using Core.Controllers.Quest;
@@ -47,7 +48,17 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
         base.Update();
         if (IsDead || (GameController.Instance != null && (GameController.Instance.IsGamePaused || GameController.Instance.IsGameOver))) return;
 
-        navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
+        try
+        {
+            if (PlayerController.Instance != null && navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning(e);
+        }
 
         bool isMoving = navMeshAgent.velocity.sqrMagnitude > 0.01f
                         && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance;

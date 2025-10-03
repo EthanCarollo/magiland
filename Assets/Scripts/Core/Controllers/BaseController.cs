@@ -16,10 +16,20 @@ public class BaseController<T> : MonoBehaviour where T : Object
     {
         if (_instance != null && _instance != (Object)(T)(object)this)
         {
-            Destroy(gameObject);
+            Transform root = transform.root;
+            Destroy(root.gameObject);
             return;
         }
         _instance = (T)(object)this;
-        DontDestroyOnLoad(gameObject);
+        
+        Transform currentRoot = transform.root;
+        if (currentRoot == transform)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(currentRoot.gameObject);
+        }
     }
 }

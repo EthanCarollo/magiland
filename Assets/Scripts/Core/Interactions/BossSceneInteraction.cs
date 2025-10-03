@@ -1,3 +1,4 @@
+using Core.Controllers;
 using Core.Controllers.Quest;
 using Core.Scene;
 
@@ -10,7 +11,10 @@ namespace Core.Interactions
 
         protected override void Interact()
         {
-            SceneTransitor.Instance.LoadScene(0);
+            SceneTransitor.Instance.LoadScene(0, (() =>
+            {
+                Destroy(PlayerController.Instance?.transform.root.gameObject);
+            }));
         }
     }
 }

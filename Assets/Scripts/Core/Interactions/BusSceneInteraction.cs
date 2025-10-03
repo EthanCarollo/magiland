@@ -15,11 +15,12 @@ namespace Core.Interactions
         protected override void Interact()
         {
             Debug.Log("Launch interaction");
-            int actualLife = PlayerController.Instance.life;
+            PlayerController playerController = PlayerController.Instance;
             WeaponData actualWeapon = FindAnyObjectByType<PlayerWeapon>()?.GetWeapon();
             SceneTransitor.Instance.LoadScene(2, (() =>
             {
-                PlayerController.Instance.UpdateLife(actualLife);
+                PlayerController.Instance.UpdateLife(playerController.life);
+                PlayerController.Instance.transform.position = new Vector3(0, playerController.transform.position.y, 0);
                 FindAnyObjectByType<PlayerWeapon>()?.SetNewWeapon(actualWeapon);
             }));
         }
