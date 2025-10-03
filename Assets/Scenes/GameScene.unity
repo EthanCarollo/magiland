@@ -737,7 +737,7 @@ MonoBehaviour:
   - {fileID: 4659610693648200294, guid: 589ae44bc6cd44915a84d4a8a392e1cd, type: 3}
   sampleMaxDistance: 2
   maxAttempts: 20
-  spawnInterval: 3
+  spawnInterval: 2
   minDistanceFromPlayer: 10
   player: {fileID: 0}
 --- !u!4 &1308756807
@@ -973,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6880722870513929496, guid: 451792c1bda4f47eb9043790aba260c4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 415.79453
       objectReference: {fileID: 0}
     - target: {fileID: 6880722870513929496, guid: 451792c1bda4f47eb9043790aba260c4, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1005,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546610444020708593, guid: 451792c1bda4f47eb9043790aba260c4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 415.79453
       objectReference: {fileID: 0}
     - target: {fileID: 8546610444020708593, guid: 451792c1bda4f47eb9043790aba260c4, type: 3}
       propertyPath: m_AnchoredPosition.x

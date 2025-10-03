@@ -9,7 +9,7 @@ namespace Core.Interactions
     {
         [SerializeField] private Canvas worldCanvasGui;
 
-        [SerializeField] protected abstract BaseQuestController<T> QuestController { get; }
+        protected abstract BaseQuestController<T> QuestController { get; }
 
         private ZoneEnter zoneEnter;
         private bool isLocked = true;
@@ -32,6 +32,7 @@ namespace Core.Interactions
                 Debug.LogWarning("QuestLockedInteractionZone: Aucun quest controller assigné!");
             }
 
+            Debug.Log("Setup interaction handle interact");
             InputController.Instance.OnInteract += HandleInteract;
 
             zoneEnter = GetComponent<ZoneEnter>();
@@ -79,12 +80,14 @@ namespace Core.Interactions
 
         void OnEnter()
         {
+            playerInside = true;
             if (!isLocked && worldCanvasGui != null)
                 worldCanvasGui.enabled = true;
         }
 
         void OnExit()
         {
+            playerInside = false;
             if (worldCanvasGui != null)
                 worldCanvasGui.enabled = false;
         }
