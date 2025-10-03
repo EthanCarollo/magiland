@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MeshRenderer), typeof(AudioSource))]
 public class PlayerWeapon : MonoBehaviour
 {
-    [SerializeField] private WeaponData weapon;
+    [SerializeField] public WeaponData weapon;
     [SerializeField] private LayerMask hitMask;
     [SerializeField] private LayerMask passThroughMask;
     [SerializeField] private Image crossHairImage;
@@ -64,8 +64,8 @@ public class PlayerWeapon : MonoBehaviour
         this.weapon = newWeapon;
         SetupWeapon(this.weapon);
     }
-    
-    void SetupWeapon(WeaponData weaponData)
+
+    public void SetupWeapon(WeaponData weaponData)
     {
         weaponMaterial.SetTexture("_BaseMap", weaponData.idleFrames[0].frame.texture);
         SetupCrosshair();

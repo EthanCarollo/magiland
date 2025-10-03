@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8110279479505434363}
   - component: {fileID: 9007160227575548696}
   - component: {fileID: 2903197681962119665}
+  - component: {fileID: 2007155226438409878}
   m_Layer: 0
   m_Name: InteractZone
   m_TagString: Untagged
@@ -68,11 +69,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fd02a60d86451a809697734887efd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interactions.BusSceneInteraction
-  triggerZone: {fileID: 9007160227575548696}
   worldCanvasGui: {fileID: 1169087177433834153}
+--- !u!114 &2007155226438409878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285098056465629357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219c46b6a259a4f288ed4407345fa333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneEnter
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
+  PlayerInside: 0
 --- !u!1 &346362464757276435
 GameObject:
   m_ObjectHideFlags: 0

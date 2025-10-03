@@ -10168,5 +10168,6 @@ MonoBehaviour:
   _simpleMouseLook: {fileID: 3335195987484966511}
   _weaponSmoothFollow: {fileID: 8613073521846255268}
   _playerMovementSimpleRB: {fileID: 1397414419612503026}
+  _playerWeapon: {fileID: 1318186773021649177}
   _camera: {fileID: 4508324264577260350}
   life: 5

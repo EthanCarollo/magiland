@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting.Dependencies.NCalc;
+using Data.Weapons;
 
 /**
  * I know you dont like this, but it is so useful in our case
@@ -20,6 +22,7 @@ namespace Core.Controllers
         [SerializeField] private SimpleMouseLook _simpleMouseLook;
         [SerializeField] private WeaponSmoothFollow _weaponSmoothFollow;
         [SerializeField] private PlayerMovementPhysics _playerMovementSimpleRB;
+        [SerializeField] private PlayerWeapon _playerWeapon;
         [SerializeField] private Camera _camera;
 
         private Vector3 originalPos;
@@ -69,6 +72,23 @@ namespace Core.Controllers
 
             _camera.transform.localPosition = originalPos;
             shakeCoroutine = null;
+        }
+
+        public void ToggleMovementActivation()
+        {
+            _playerMovementSimpleRB.enabled = !_playerMovementSimpleRB.enabled;
+            _simpleMouseLook.enabled = !_simpleMouseLook.enabled;
+            _weaponSmoothFollow.enabled = !_weaponSmoothFollow.enabled;
+        }
+
+        public void SetNewWeapon(WeaponData weapon)
+        {
+            _playerWeapon.SetNewWeapon(weapon);
+        }
+
+        public WeaponData GetCurrentWeapon()
+        {
+            return _playerWeapon.weapon;
         }
 
 #if UNITY_EDITOR
