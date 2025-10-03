@@ -54,6 +54,17 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
+    public WeaponData GetWeapon()
+    {
+        return this.weapon;
+    }
+
+    public void SetNewWeapon(WeaponData newWeapon)
+    {
+        this.weapon = newWeapon;
+        SetupWeapon(this.weapon);
+    }
+    
     void SetupWeapon(WeaponData weaponData)
     {
         weaponMaterial.SetTexture("_BaseMap", weaponData.idleFrames[0].frame.texture);
