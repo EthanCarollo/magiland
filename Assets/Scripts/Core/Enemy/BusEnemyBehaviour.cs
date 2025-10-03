@@ -9,6 +9,7 @@ using UnityEngine.AI;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class BusEnemyBehaviour : BaseEnemyBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
@@ -18,7 +19,15 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     [SerializeField] private TextMeshProUGUI enemyNameText;
     [SerializeField] private Slider enemyLifeSlider;
     [SerializeField] protected Animator animator;
+    private AudioSource audioSource;
+    private float lastTimeAttacked = 0;
+    private bool isAttacking = false;
 
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    
     void Start()
     {
         navMeshAgent.speed = enemy.enemySpeed;
@@ -33,10 +42,36 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
 
         navMeshAgent.SetDestination(PlayerController.Instance.transform.position);
 
-        bool isMoving = navMeshAgent.velocity.sqrMagnitude > 0.01f 
+        bool isMoving = navMeshAgent.velocity.sqrMagnitude > 0.01f
                         && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance;
 
         animator.SetBool("IsMoving", isMoving);
+
+        if (navMeshAgent.hasPath &&
+            navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            Attack();
+        }
+
+        // Playing basic enemy sound
+        if (!audioSource.isPlaying) audioSource.PlayOneShot(enemy.enemySounds.GetRandom());
+    }
+
+    void Attack()
+    {
+        if (Time.time - lastTimeAttacked >= enemy.enemyAttackCooldown) isAttacking = false;
+        if (isAttacking) return;
+
+        isAttacking = true;
+        lastTimeAttacked = Time.time;
+
+        if (enemy.attackSound != null)
+        {
+            if (audioSource.isPlaying) audioSource.Stop();
+            audioSource.PlayOneShot(enemy.attackSound);
+        }
+
+        PlayerController.Instance.TakeDamage();
     }
 
     
@@ -54,7 +89,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     {
         enemyLifeSlider.maxValue = enemy.maxLife;
         enemyNameText.text = enemy.enemyName;
-        
+
         LeanTween.cancel(enemyLifeSlider.gameObject);
         LeanTween.value(enemyLifeSlider.gameObject, enemyLifeSlider.value, currentLife, 0.3f)
             .setOnUpdate((float val) =>
