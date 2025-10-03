@@ -49,9 +49,9 @@ namespace Core.Enemy
             }
             LeanTween.delayedCall(4f, () =>
             {
-                if (gameObject == null) return;
                 try
                 {
+                    if (gameObject == null) return;
                     LeanTween.moveY(gameObject, transform.position.y + 200f, 2f)
                         .setEaseInOutSine()
                         .setOnComplete((() =>

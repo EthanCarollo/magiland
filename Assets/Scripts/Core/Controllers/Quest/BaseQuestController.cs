@@ -1,3 +1,4 @@
+using Core.Scene;
 using UnityEngine;
 
 namespace Core.Controllers.Quest
@@ -25,6 +26,12 @@ namespace Core.Controllers.Quest
         public void Start()
         {
             OnQuestEnd += EndQuest;
+            SceneTransitor.Instance.OnLoadNewScene += ResetQuest;
+        }
+
+        public void OnDisable()
+        {
+            SceneTransitor.Instance.OnLoadNewScene -= ResetQuest;
         }
 
         public void EndQuest()
@@ -42,7 +49,13 @@ namespace Core.Controllers.Quest
         {
             OnQuestEnd?.Invoke();
         }
-        
+
+        public void ResetQuest()
+        {
+            Debug.Log($"Reset quest -- {gameObject.name}" );
+            _actualAdvancement = 0;
+            questEnd = false;
+        }
         
         public void AdvanceQuest()
         {

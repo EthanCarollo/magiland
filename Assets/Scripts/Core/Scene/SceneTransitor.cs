@@ -6,6 +6,9 @@ namespace Core.Scene
     public class SceneTransitor : MonoBehaviour
     {
         public static SceneTransitor Instance;
+        
+        public delegate void LoadNewScene();
+        public LoadNewScene OnLoadNewScene;
     
         public GameObject loadingScreen;
 
@@ -20,12 +23,14 @@ namespace Core.Scene
         }
     
         public void LoadScene(int sceneToLoad){
+            OnLoadNewScene?.Invoke();
             var loadingScreenPrefab = GameObject.Instantiate(loadingScreen);
             loadingScreenPrefab.GetComponent<LoadingScreenController>()
                 .StartToLoadScene(sceneToLoad);
         }
     
         public void LoadScene(int sceneToLoad, Action onEndCallback){
+            OnLoadNewScene?.Invoke();
             var loadingScreenPrefab = GameObject.Instantiate(loadingScreen);
             loadingScreenPrefab.GetComponent<LoadingScreenController>()
                 .StartToLoadScene(sceneToLoad, onEndCallback);
