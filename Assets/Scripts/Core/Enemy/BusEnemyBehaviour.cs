@@ -61,7 +61,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     {
         if (Time.time - lastTimeAttacked >= enemy.enemyAttackCooldown) isAttacking = false;
         if (isAttacking) return;
-
+        
         isAttacking = true;
         lastTimeAttacked = Time.time;
 
