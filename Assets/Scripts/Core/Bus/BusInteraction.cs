@@ -1,5 +1,5 @@
 ﻿using System;
-using Core.Quest;
+using Core.Controllers.Quest;
 using UnityEngine;
 
 namespace Core.Bus

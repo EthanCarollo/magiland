@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using Core.Quest;
+using Core.Controllers.Quest;
 
 public class BusSpawnController : MonoBehaviour
 {

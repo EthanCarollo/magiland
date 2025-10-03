@@ -9,12 +9,12 @@ namespace Core.Enemy
         [Header("References & Data")]
         [SerializeField] protected EnemyData enemy;
         [SerializeField] protected float currentLife;
-        [SerializeField] protected Animator animator;
         [SerializeField] protected SpriteRenderer spriteRenderer;
         protected bool IsDead;
         
         public void Start()
         {
+            currentLife = enemy.maxLife;
             OnUpdateUi();
         }
         

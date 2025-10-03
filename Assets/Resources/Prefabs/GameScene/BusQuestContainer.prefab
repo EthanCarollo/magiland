@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 321.51355, y: -102.86}
-  m_SizeDelta: {x: 553.0271, y: 0}
+  m_AnchoredPosition: {x: 320, y: -102.86}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7028662840263821779
 CanvasRenderer:
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 1776860810672225916}
   - component: {fileID: 3538128505464835722}
   - component: {fileID: 2050501861980739768}
-  - component: {fileID: 2949259281148430905}
+  - component: {fileID: 3045395721118754616}
   m_Layer: 5
   m_Name: BusQuestContainer
   m_TagString: Untagged
@@ -254,7 +254,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3845052105490117602}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &2949259281148430905
+--- !u!114 &3045395721118754616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,12 +355,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3845052105490117602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ee47e0035d4ad29e49cafc68888493, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ea24e5846a946b484c8d2391cac8dcd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Core.UserInterface.BusQuestInterface
-  busQuestContainer: {fileID: 3845052105490117602}
-  busQuestDescription: {fileID: 1521161868260784750}
-  busQuestProgressSlider: {fileID: 2446409961472622674}
+  m_EditorClassIdentifier: Assembly-CSharp::Core.UserInterface.Quest.BossQuestInterface
+  QuestContainer: {fileID: 3845052105490117602}
+  QuestDescription: {fileID: 1521161868260784750}
+  QuestProgressSlider: {fileID: 2446409961472622674}
 --- !u!1 &8265352909674574943
 GameObject:
   m_ObjectHideFlags: 0

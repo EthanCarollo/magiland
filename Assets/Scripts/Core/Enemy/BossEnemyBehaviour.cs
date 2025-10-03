@@ -1,3 +1,4 @@
+using Core.Controllers.Quest;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -8,6 +9,11 @@ namespace Core.Enemy
     {
         [SerializeField] private TextMeshProUGUI enemyNameText;
         [SerializeField] private Slider enemyLifeSlider;
+
+        public void Start()
+        {
+            base.Start();
+        }
 
         protected override void OnBeforeTakeDamage()
         {
@@ -33,9 +39,13 @@ namespace Core.Enemy
                 .setEaseOutCubic();
         }
 
+        
         protected override void OnDeath()
         {
-            
+            this.GetComponent<Collider>().enabled = false;
+            if (BossQuestController.Instance != null)
+                BossQuestController.Instance.AdvanceQuest();
         }
+
     }
 }

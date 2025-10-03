@@ -1,6 +1,6 @@
 using Core.Controllers;
 using Core.Enemy;
-using Core.Quest;
+using Core.Controllers.Quest;
 using Data.Enemy;
 using Extensions;
 using TMPro;
@@ -17,10 +17,10 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
     [SerializeField] private Transform transformCanvas;
     [SerializeField] private TextMeshProUGUI enemyNameText;
     [SerializeField] private Slider enemyLifeSlider;
+    [SerializeField] protected Animator animator;
 
     void Start()
     {
-        currentLife = enemy.maxLife;
         navMeshAgent.speed = enemy.enemySpeed;
         navMeshAgent.stoppingDistance = enemy.enemyRange;
         base.Start();
@@ -75,9 +75,7 @@ public class BusEnemyBehaviour : BaseEnemyBehaviour
         this.GetComponent<NavMeshAgent>().enabled = false;
         transformCanvas.gameObject.SetActive(false);
         if (BusQuestController.Instance != null)
-        {
-            BusQuestController.Instance.OnEnemyDied();
-        }
+            BusQuestController.Instance.AdvanceQuest();
     }
 
 }
